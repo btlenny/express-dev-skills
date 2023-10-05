@@ -12,25 +12,25 @@ module.exports = {
   };
 
 function deleteOne(id) {
-    id = parseInt(id);
-    const idx = skills.findIndex(skill => skill.id === id);
-    skill.splice(idx, 1);
+  id = parseInt(id);
+    // Find the index for the todo
+  const idx = skills.findIndex(skill => skill.id === id);
+  skills.splice(idx, 1);
   }
 
-  function create(skill) {
+
+function create(skill) {
   // Add the id
   skill.id = Date.now() % 1000000;
-  // New skills wouldn't be done :)
   skill.done = false;
-  skill.push(skill);
-  }
-
+  skills.push(skill);
+}
 
 function getOne(id) {
   id = parseInt(id);
   return skills.find(skill => skill.id === id);
 }
 
-  function getAll() {
-    return skills;
+function getAll() {
+  return skills;
 }

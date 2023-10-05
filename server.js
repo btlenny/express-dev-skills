@@ -35,8 +35,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));  // add this
-app.use(express.static(path.join(__dirname, 'public')));
-
 
 app.use('/', indexRouter);
 app.use('/skills', skillsRouter);
