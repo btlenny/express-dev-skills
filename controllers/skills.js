@@ -11,7 +11,7 @@ module.exports = {
 
 function deleteSkill(req, res) {
   Skill.deleteOne(req.params.id);
-  res.redirect('/todos');
+  res.redirect('/skills');
 }
 
 
