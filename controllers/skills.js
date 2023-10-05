@@ -14,11 +14,6 @@ function deleteSkill(req, res) {
   res.redirect('/skills');
 }
 
-
-function newSkill(req, res) {
-    res.render('skills/new', { title: 'Skill' });
-  }
-
 function create(req, res) {
     console.log(req.body);
     // The model is responsible for creating data
@@ -32,13 +27,15 @@ function newSkill(req, res) {
   }
 
 function show(req, res) {
-  res.render('skills/show',{
-    skill: Skill.getOne(req.params.id)
+  res.render('skills/show', {
+    skill: Skill.getOne(req.params.id),
+    title: 'Skill Details'
   });
 }
 
 function index(req, res) {
     res.render('skills/index', {
-      skills: Skill.getAll()
+      skills: Skill.getAll(),
+      title: 'All Skills'
     });
   }
