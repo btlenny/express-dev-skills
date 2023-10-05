@@ -7,7 +7,14 @@ var skillsCtrl = require('../controllers/skills');
 
 //GET/skills
 router.get('/', skillsCtrl.index);
-// GET/ todos/ :id
+// GET/ skills :id
 router.get('/:id', skillsCtrl.show);
+// GET /skills/new   <-- this new route cannot not stay here!
+router.get('/new', skillsCtrl.new);
+// // POST /skills
+router.post('/', skillsCtrl.create); 
+// delete
+router.delete('/:id', skillsCtrl.delete)
+
 
 module.exports = router;

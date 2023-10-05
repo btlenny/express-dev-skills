@@ -3,8 +3,33 @@ const Skill = require('../models/skill');
 
 module.exports = {
     index,
-    show
+    show,
+    new: newSkill,
+    create,
+    delete: deleteSkill
   };
+
+function deleteSkill(req, res) {
+  Skill.deleteOne(req.params.id);
+  res.redirect('/todos');
+}
+
+
+function newSkill(req, res) {
+    res.render('skills/new', { title: 'Skill' });
+  }
+
+function create(req, res) {
+    console.log(req.body);
+    // The model is responsible for creating data
+    Skill.create(req.body);
+    // Do a redirect anytime data is changed
+    res.redirect('/skills');
+  }
+
+function newSkill(req, res) {
+    res.render('skills/new', { title: 'New Skill' });
+  }
 
 function show(req, res) {
   res.render('skills/show',{

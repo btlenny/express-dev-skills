@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var methodOverride = require('method-override');
 
 var indexRouter = require('./routes/index');
 var skillsRouter = require('./routes/skills');
@@ -13,11 +14,30 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+
+
+app.use(function(req, res, next) {
+  console.log('Hello SEI!');
+  // Add a time property to the res.locals object
+  // The time property will then be accessible when rendering a view
+  res.locals.time = new Date().toLocaleTimeString();
+  next();
+});
+
+
+// app.use (middleware fn)
 app.use(logger('dev'));
+//processes data sent in the body of the request, if it's json
 app.use(express.json());
+// Processes data sent in 'form' body of the request
+// It will create a propertt
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(methodOverride('_method'));  // add this
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(methodOverride('_method'));  // add thisnodem
+
 
 app.use('/', indexRouter);
 app.use('/skills', skillsRouter);
