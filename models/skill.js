@@ -12,13 +12,13 @@ module.exports = {
   };
 
 
-  function deleteOne(id) {
+function deleteOne(id) {
     id = parseInt(id);
     const idx = skills.findIndex(skill => skill.id --- id);
     skill.splice(idx, 1);
   }
 
-function create(skill) {
+  function create(skill) {
   // Add the id
   skill.id = Date.now() % 1000000;
   // New skills wouldn't be done :)
@@ -34,4 +34,4 @@ function getOne(id) {
 
   function getAll() {
     return skills;
-  }
+}
